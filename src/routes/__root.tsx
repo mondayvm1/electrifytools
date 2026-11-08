@@ -11,6 +11,7 @@ import {
 import { type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
+import { asset, SHARE_IMAGE } from "../lib/site";
 
 function NotFoundComponent() {
   return (
@@ -76,6 +77,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Electrify Tools" },
       { name: "author", content: "Electrify Tools" },
+      { name: "theme-color", content: "#0b0f12" },
+      { property: "og:site_name", content: "Electrify Tools" },
+      { property: "og:image", content: SHARE_IMAGE.url },
+      { property: "og:image:width", content: SHARE_IMAGE.width },
+      { property: "og:image:height", content: SHARE_IMAGE.height },
+      { property: "og:image:alt", content: SHARE_IMAGE.alt },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: SHARE_IMAGE.url },
     ],
     links: [
       {
@@ -85,7 +94,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Manrope:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", href: asset("favicon.ico"), sizes: "48x48" },
+      { rel: "icon", href: asset("favicon-32.png"), type: "image/png", sizes: "32x32" },
+      { rel: "apple-touch-icon", href: asset("apple-touch-icon.png") },
     ],
   }),
   shellComponent: RootShell,

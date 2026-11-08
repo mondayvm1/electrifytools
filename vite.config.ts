@@ -14,6 +14,7 @@ const basePath = process.env["SITE_BASE_PATH"]?.replace(/\/+$/, "");
 // locally it builds a Node server in .output/.
 export default defineConfig(({ command }) => ({
   ...(basePath ? { base: `${basePath}/` } : {}),
+  define: { __PUBLIC_ORIGIN__: JSON.stringify(process.env["PUBLIC_ORIGIN"]?.replace(/\/+$/, "") ?? "") },
   resolve: {
     alias: { "@": fileURLToPath(new URL("./src", import.meta.url)) },
     dedupe: ["react", "react-dom", "@tanstack/react-query", "@tanstack/query-core"],

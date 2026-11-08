@@ -2,19 +2,23 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import DialScene from "@/components/dial/DialScene";
 import { captureReferral, currentReferral } from "@/lib/referral";
+import { SITE_URL } from "@/lib/site";
 import { PRODUCTS, formatPrice, type Product } from "@/config/products";
 import { Battery, Bluetooth, Gauge, Zap, ShieldCheck, Trophy, Thermometer, Cpu, Plug, Smartphone, FileCheck2, Activity } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   ssr: false,
   head: () => ({
+    links: [{ rel: "canonical", href: SITE_URL }],
     meta: [
       { title: "Electrify Dial 2.0 — Tesla Diagnostics | Electrify Tools" },
       { name: "description", content: "Plug-in dial that reads your Tesla's CAN bus: pack health, 12V, brick voltages, range, faults and your Electrify Score — live on the dial and your phone." },
-      { property: "og:title", content: "Electrify Dial 2.0 — Tesla Diagnostics" },
-      { property: "og:description", content: "Know your battery before the dealer does. 20+ performance indicators, badges and your Electrify Score." },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:title", content: "The Electrify Dial 2.0 — know your Tesla's real health" },
+      { property: "og:description", content: "Plugs into your Tesla and reads what the dealer reads: pack health, brick voltages, 12V, range and faults. 20+ performance indicators. $350." },
+      { property: "og:type", content: "product" },
+      { property: "og:url", content: SITE_URL },
+      { name: "twitter:title", content: "The Electrify Dial 2.0 — know your Tesla's real health" },
+      { name: "twitter:description", content: "Pack health, brick voltages, 12V, range and faults, live on the dial and your phone. $350." },
     ],
   }),
   component: Index,
